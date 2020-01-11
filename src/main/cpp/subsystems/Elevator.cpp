@@ -17,13 +17,14 @@ Elevator::Elevator()
   GetPIDController()->SetPID(kP_simulation, kI_simulation, 0, 0);
 #endif
   m_controller.SetTolerance(0.005);
-
+  //David also likes comments...
   SetName("Elevator");
   elevatorMotor = new rev::CANSparkMax(41, rev::CANSparkMax::MotorType::kBrushless);
   // Let's show everything on the LiveWindow
   // Corey added a comment to brandons file
   // Corey is trying to break git
   // Hello 
+  // Corey is adding more code
   AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);
 }
@@ -41,3 +42,4 @@ void Elevator::setElevator(double joyVal){
 }
 
 //Sam Herrera
+//i have headache - sydsquid
