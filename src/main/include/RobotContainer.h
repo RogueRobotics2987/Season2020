@@ -38,6 +38,7 @@ class RobotContainer {
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
+  ColorSensor m_colorsensor;
 
 
   Autonomous m_autonomousCommand;
