@@ -19,7 +19,7 @@ Elevator::Elevator()
   m_controller.SetTolerance(0.005);
 
   SetName("Elevator");
-  elevatorMotor = new rev::CANSparkMax(0, rev::CANSparkMax::MotorType::kBrushless);
+  elevatorMotor = new rev::CANSparkMax(41, rev::CANSparkMax::MotorType::kBrushless);
   // Let's show everything on the LiveWindow
   AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);

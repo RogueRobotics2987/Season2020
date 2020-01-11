@@ -17,6 +17,7 @@
 #include "commands/PrepareToPickup.h"
 #include "commands/SetElevatorSetpoint.h"
 #include "commands/TankDrive.h"
+#include "commands/ElevatorJoyControl.h"
 
 RobotContainer::RobotContainer()
     : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) {
@@ -31,13 +32,15 @@ RobotContainer::RobotContainer()
   m_drivetrain.Log();
 
   m_drivetrain.SetDefaultCommand(TankDrive(
-      [this] { return m_joy.GetY(frc::GenericHID::JoystickHand::kLeftHand); },
-      [this] { return m_joy.GetY(frc::GenericHID::JoystickHand::kRightHand); },
+      [this] { return m_joy.GetY(); },
+      [this] { return m_joy.GetZ(); },
       &m_drivetrain));
+  m_elevator.SetDefaultCommand(ElevatorJoyControl([this]{ return xbox.GetRawAxis(3) * .5;}, &m_elevator));
 
   // Configure the button bindings
   ConfigureButtonBindings();
 }
+
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
@@ -49,6 +52,7 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton m_r2{&m_joy, 10};
   frc2::JoystickButton m_l1{&m_joy, 11};
   frc2::JoystickButton m_r1{&m_joy, 12};
+  
 
   m_dUp.WhenPressed(SetElevatorSetpoint(0.2, &m_elevator));
   m_dDown.WhenPressed(SetElevatorSetpoint(-0.2, &m_elevator));

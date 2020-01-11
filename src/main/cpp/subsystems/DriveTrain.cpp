@@ -56,7 +56,7 @@ void DriveTrain::Log() {
 }
 
 void DriveTrain::Drive(double left, double right) {
-  m_robotDrive->TankDrive(left, right);
+  m_robotDrive->ArcadeDrive(left, right);
 }
 
 double DriveTrain::GetHeading() { /*return m_gyro.GetAngle();*/ return 0; }
