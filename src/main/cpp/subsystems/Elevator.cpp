@@ -21,6 +21,7 @@ Elevator::Elevator()
   SetName("Elevator");
   elevatorMotor = new rev::CANSparkMax(41, rev::CANSparkMax::MotorType::kBrushless);
   // Let's show everything on the LiveWindow
+  // Corey added a comment to brandons file
   AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);
 }
