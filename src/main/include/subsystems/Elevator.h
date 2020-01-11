@@ -10,6 +10,8 @@
 #include <frc/AnalogPotentiometer.h>
 #include <frc/PWMVictorSPX.h>
 #include <frc2/command/PIDSubsystem.h>
+#include "rev/CANSparkMax.h"
+
 
 /**
  * The elevator subsystem uses PID to go to a given height. Unfortunately, in
@@ -39,7 +41,10 @@ class Elevator : public frc2::PIDSubsystem {
    */
   void UseOutput(double output, double setpoint) override;
 
+  void setElevator(double joyVal); 
+
  private:
+  rev::CANSparkMax* elevatorMotor; 
   frc::PWMVictorSPX m_motor{5};
   double m_setpoint = 0;
 
