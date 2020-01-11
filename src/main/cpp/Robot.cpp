@@ -9,6 +9,8 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
+#include "rev/ColorSensorV3.h"
+#include <frc/TimedRobot.h>
 
 void Robot::RobotInit() {}
 
@@ -20,26 +22,83 @@ void Robot::RobotInit() {}
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
+static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
+
+rev::ColorSensorV3 m_colorSensor{i2cPort};
+
+ std::string matching(frc::Color myColorSensor)
+ {if ((myColorSensor.blue>=0.30) && 
+ (myColorSensor.green>myColorSensor.blue) &&
+ (myColorSensor.green>myColorSensor.red))
+ return "blue";
+
+ else if  ((myColorSensor.green>myColorSensor.blue) &&
+ (myColorSensor.green>myColorSensor.red) &&
+ (abs(myColorSensor.red-myColorSensor.blue)<=.07)
+ )
+ return "green";
+
+ else if  (((myColorSensor.red>myColorSensor.blue) &&
+ (myColorSensor.red>myColorSensor.green))
+ || (abs(myColorSensor.red-myColorSensor.green)<=.1)
+ )
+ return "red";
+
+ else if  ((myColorSensor.red<=0.47 && myColorSensor.red>=0.17) &&
+ (myColorSensor.green<=0.70 && myColorSensor.green>=0.40) &&
+ (myColorSensor.blue<=0.27 && myColorSensor.blue>=0.0))
+ return "yellow";
+ 
+   return "";
+ }
+  void RobotPeriodic() {
+    /**
+     * The method GetColor() returns a normalized color value from the sensor and can be
+     * useful if outputting the color to an RGB LED or similar. To
+     * read the raw color, use GetRawColor().
+     * 
+     * The color sensor works best when within a few inches from an object in
+     * well lit conditions (the built in LED is a big help here!). The farther
+     * an object is the more light from the surroundings will bleed into the 
+     * measurements and make it difficult to accurately determine its color.
+     */
+    frc::Color myColorSensor = m_colorSensor.GetColor();
+
+    /**
+     * The sensor returns a raw IR value of the infrared light detected.
+     */
+    double IR = m_colorSensor.GetIR();
+
+    /**
+     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
+     * sensor.
+     */
+    frc::SmartDashboard::PutNumber("Red", myColorSensor.red);
+    frc::SmartDashboard::PutNumber("Green", myColorSensor.green);
+    frc::SmartDashboard::PutNumber("Blue", myColorSensor.blue);
+    frc::SmartDashboard::PutNumber("IR", IR);
+    frc::SmartDashboard::PutString("Wheel Color", matching(myColorSensor));
+
+//std::string Bob= matching(myColorSensor);
+
+
+    /**
+     * In addition to RGB IR values, the color sensor can also return an 
+     * infrared proximity value. The chip contains an IR led which will emit
+     * IR pulses and measure the intensity of the return. When an object is 
+     * close the value of the proximity will be large (max 2047 with default
+     * settings) and will approach zero when the object is far away.
+     * 
+     * Proximity can be used to roughly approximate the distance of an object
+     * or provide a threshold for when an object is close enough to provide
+     * accurate color values.
+     */
+    uint32_t proximity = m_colorSensor.GetProximity();
+
+    frc::SmartDashboard::PutNumber("Proximity",
+     proximity);
+  }
+//void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
