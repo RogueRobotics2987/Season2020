@@ -40,10 +40,6 @@ m_motor.Set(output);
 void Elevator::setElevator(double joyVal){
   elevatorMotor->Set(joyVal); 
 }
-//mitchell
-//i have headache - sydsquid
-//Dannalyn's comment
 //i have headache - sydsquid
 //i have headache - sydsquid
 // sorry about your headache - alex
-
