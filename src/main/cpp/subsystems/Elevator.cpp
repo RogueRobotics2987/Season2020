@@ -19,6 +19,7 @@ Elevator::Elevator()
   m_controller.SetTolerance(0.005);
 
   SetName("Elevator");
+  elevatorMotor = new rev::CANSparkMax(0, rev::CANSparkMax::MotorType::kBrushless);
   // Let's show everything on the LiveWindow
   AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);
@@ -29,5 +30,9 @@ void Elevator::Log() { frc::SmartDashboard::PutData("Wrist Pot", &m_pot); }
 double Elevator::GetMeasurement() { return m_pot.Get(); }
 
 void Elevator::UseOutput(double output, double setpoint) {
-  m_motor.Set(output);
+m_motor.Set(output);
+}
+
+void Elevator::setElevator(double joyVal){
+  elevatorMotor->Set(joyVal); 
 }
