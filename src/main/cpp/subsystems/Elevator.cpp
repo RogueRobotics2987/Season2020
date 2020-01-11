@@ -17,7 +17,7 @@ Elevator::Elevator()
   GetPIDController()->SetPID(kP_simulation, kI_simulation, 0, 0);
 #endif
   m_controller.SetTolerance(0.005);
-
+  //David also likes comments...
   SetName("Elevator");
   elevatorMotor = new rev::CANSparkMax(41, rev::CANSparkMax::MotorType::kBrushless);
   // Let's show everything on the LiveWindow
