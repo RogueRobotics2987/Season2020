@@ -23,6 +23,7 @@ Elevator::Elevator()
   // Let's show everything on the LiveWindow
   // Corey added a comment to brandons file
   // Corey is trying to break git
+  // Hello 
   AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);
 }
