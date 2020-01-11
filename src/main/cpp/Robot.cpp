@@ -6,7 +6,8 @@
 /*----------------------------------------------------------------------------*/
  
 #include "Robot.h"
-
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableInstance.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
@@ -82,6 +83,38 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+  
+ //    PULLING LIMELIGHT DATA FROM NETWORK TABLE
+    std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight-rr");
+    double targetValidity = table->GetNumber("tv",0.0);
+    double targetOffsetAngle_Horizontal = table->GetNumber("tx",0.0);
+    double targetOffsetAngle_Vertical = table->GetNumber("ty",0.0);
+    double targetArea = table->GetNumber("ta",0.0);
+    double targetSkew = table->GetNumber("ts",0.0);
+    double targetLatency = table->GetNumber("tl",0.0);
+    double targetLengthShortSide = table->GetNumber("tshort",0.0);
+    double targetLengthLongSide = table->GetNumber("tlong",0.0);
+    double targetHorizontalLength = table->GetNumber("thor",0.0);
+    double targetVerticalLength = table->GetNumber("tvert",0.0);
+    double targetPipe = table->GetNumber("getpipe",0.0);
+    double targetTranslation = table->GetNumber("camtran",0.0);
+
+    bool tarVal = targetValidity;
+
+    //    DISPLAYING LIMELIGHT DATA TO SMART DASHBOARD
+    frc::SmartDashboard::PutBoolean("Target Validity", tarVal);     //check shuffleboard docs on r/g boolean tabs instead of text
+    frc::SmartDashboard::PutNumber("Target Offset Angle (Horizontal)", targetOffsetAngle_Horizontal);
+    frc::SmartDashboard::PutNumber("Target Offset Angle (Vertical)", targetOffsetAngle_Vertical);
+    frc::SmartDashboard::PutNumber("Target Area", targetArea);
+    frc::SmartDashboard::PutNumber("Target Skew", targetSkew);
+    frc::SmartDashboard::PutNumber("Target Latency", targetLatency);
+    frc::SmartDashboard::PutNumber("Target Length (Short Side)", targetLengthShortSide);
+    frc::SmartDashboard::PutNumber("Target Length (Long Side)", targetLengthLongSide);
+    frc::SmartDashboard::PutNumber("Target Length (Horizontal)", targetHorizontalLength);
+    frc::SmartDashboard::PutNumber("Target Length (Vertical)", targetVerticalLength);
+    frc::SmartDashboard::PutNumber("Target Pipe", targetPipe);
+    frc::SmartDashboard::PutNumber("Target Translation", targetTranslation);
+
   // NON CMD-BASED Approach:
   //drive robot 
     //joystick input
