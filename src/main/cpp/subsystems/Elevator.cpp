@@ -43,3 +43,7 @@ void Elevator::setElevator(double joyVal){
 
 //Sam Herrera
 //i have headache - sydsquid
+//Dannalyn's comment
+//i have headache - sydsquid
+//i have headache - sydsquid
+// sorry about your headache - alex
