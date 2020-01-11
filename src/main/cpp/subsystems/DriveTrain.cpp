@@ -9,7 +9,7 @@
 
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SmartDashboard.h>
-
+// coreys code is now different than brandons!
 DriveTrain::DriveTrain() {
 // Encoders may measure differently in the real world and in
 // simulation. In this example the robot moves 0.042 barleycorns
