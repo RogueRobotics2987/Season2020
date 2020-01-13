@@ -26,6 +26,7 @@ DriveTrain::DriveTrain() {
   // m_rightEncoder.SetDistancePerPulse(static_cast<double>(4.0 / 12.0 * M_PI) /
   //                                    360.0);
 #endif
+
   SetName("DriveTrain");
   LeftBack = new rev::CANSparkMax(46, rev::CANSparkMax::MotorType::kBrushless);
   LeftFront = new rev::CANSparkMax(48, rev::CANSparkMax::MotorType::kBrushless);

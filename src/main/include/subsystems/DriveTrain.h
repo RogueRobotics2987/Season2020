@@ -15,6 +15,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc2/command/SubsystemBase.h>
 #include "rev/CANSparkMax.h"
+#include "ctre/Phoenix.h"
 
 namespace frc {
 class Joystick;
@@ -63,11 +64,12 @@ class DriveTrain : public frc2::SubsystemBase {
 
  private:
 
+  TalonSRX motor1 = {1};
 
-  rev::CANSparkMax* LeftBack;
-  rev::CANSparkMax* LeftFront;
-  rev::CANSparkMax* RightBack;
-  rev::CANSparkMax* RightFront;
+  // rev::CANSparkMax* LeftBack;
+  // rev::CANSparkMax* LeftFront;
+  // rev::CANSparkMax* RightBack;
+  // rev::CANSparkMax* RightFront;
   frc::DifferentialDrive* m_robotDrive;
 
   // frc::PWMVictorSPX m_frontLeft{1};
