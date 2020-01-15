@@ -16,12 +16,14 @@
 #include "commands/PrepareToPickup.h"
 #include "commands/SetDistanceToBox.h"
 #include "commands/SetWristSetpoint.h"
+#include "commands/Shoot.h"
 
 Autonomous::Autonomous(Claw* claw, Wrist* wrist, Elevator* elevator,
                        DriveTrain* drivetrain) {
   SetName("Autonomous");
   AddCommands(
       // clang-format off
+      // Shoot(shooter);
       PrepareToPickup(claw, wrist, elevator),
       Pickup(claw, wrist, elevator),
       SetDistanceToBox(0.10, drivetrain),
@@ -32,4 +34,5 @@ Autonomous::Autonomous(Claw* claw, Wrist* wrist, Elevator* elevator,
       frc2::ParallelCommandGroup(SetWristSetpoint(-45, wrist),
                                  CloseClaw(claw)));
   // clang-format on
+      
 }

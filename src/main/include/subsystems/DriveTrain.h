@@ -63,7 +63,6 @@ class DriveTrain : public frc2::SubsystemBase {
 
  private:
 
-
   rev::CANSparkMax* LeftBack;
   rev::CANSparkMax* LeftFront;
   rev::CANSparkMax* RightBack;

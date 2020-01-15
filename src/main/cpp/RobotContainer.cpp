@@ -18,18 +18,22 @@
 #include "commands/SetElevatorSetpoint.h"
 #include "commands/TankDrive.h"
 #include "commands/ElevatorJoyControl.h"
+#include "commands/Shoot.h"
 
+//SH yo so i tried setting up shooter and theres stuff here
 RobotContainer::RobotContainer()
-    : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) {
+    : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain /*&m_shooter*/) {
   frc::SmartDashboard::PutData(&m_drivetrain);
   frc::SmartDashboard::PutData(&m_elevator);
   frc::SmartDashboard::PutData(&m_wrist);
   frc::SmartDashboard::PutData(&m_claw);
+  // frc::SmartDashboard::PutData(&m_shooter);
 
-  m_claw.Log();
+ // m_claw.Log();
   m_wrist.Log();
   m_elevator.Log();
   m_drivetrain.Log();
+  // m_shooter.Log();
 
   m_drivetrain.SetDefaultCommand(TankDrive(
       [this] { return m_joy.GetY(); },
@@ -63,6 +67,8 @@ void RobotContainer::ConfigureButtonBindings() {
   m_r2.WhenPressed(Pickup(&m_claw, &m_wrist, &m_elevator));
   m_l1.WhenPressed(Place(&m_claw, &m_wrist, &m_elevator));
   m_l2.WhenPressed(Autonomous(&m_claw, &m_wrist, &m_elevator, &m_drivetrain));
+  // m_l2.WhenPressed(Shoot(&m_shooter));
+
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

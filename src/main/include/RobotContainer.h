@@ -15,6 +15,7 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Wrist.h"
+#include "subsystems/Shooter.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -38,6 +39,7 @@ class RobotContainer {
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
+  Shooter m_shooter;
 
 
   Autonomous m_autonomousCommand;

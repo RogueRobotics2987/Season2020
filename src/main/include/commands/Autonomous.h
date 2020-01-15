@@ -14,6 +14,7 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Wrist.h"
+#include "subsystems/Shooter.h"
 
 /**
  * The main autonomous command to pickup and deliver the soda to the box.
