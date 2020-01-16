@@ -36,7 +36,7 @@ RobotContainer::RobotContainer()
       [this] { return m_joy.GetY(); },
       [this] { return m_joy.GetZ(); },
       &m_drivetrain));
-  m_elevator.SetDefaultCommand(ElevatorJoyControl([this]{ return xbox.GetRawAxis(3) * .5;}, &m_elevator));
+  m_elevator.SetDefaultCommand(ElevatorJoyControl(xbox.GetRawAxis(3) * .5, &m_elevator));
 
   // Configure the button bindings
   ConfigureButtonBindings();

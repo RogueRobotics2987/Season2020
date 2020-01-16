@@ -5,10 +5,10 @@
 
 class ElevatorJoyControl : public frc2::CommandHelper<frc2::CommandBase, ElevatorJoyControl>{
     public:
-        ElevatorJoyControl(std::function<double()> xboxVal, Elevator* elevator); 
+        ElevatorJoyControl(double motorOutput, Elevator* elevator); 
         void Execute(); 
     private: 
-        std::function<double()> xboxValue; 
+        double motorSpeed; 
         Elevator* realElevator; 
 
 

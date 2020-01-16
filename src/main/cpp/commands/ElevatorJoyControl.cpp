@@ -1,13 +1,13 @@
 #include "commands/ElevatorJoyControl.h"
 
-ElevatorJoyControl::ElevatorJoyControl(std::function<double()> xboxVal, Elevator* elevator)
-: xboxValue(xboxVal), realElevator(elevator){
+ElevatorJoyControl::ElevatorJoyControl(double motorOutput, Elevator* elevator)
+: motorSpeed(motorOutput), realElevator(elevator){
     AddRequirements(realElevator);
     SetName("ElevatorJoyControl");
 
 }
 
 void ElevatorJoyControl::Execute(){
-    realElevator->setElevator(-xboxValue()); 
+    realElevator->setElevator(motorSpeed); 
 
 }
