@@ -8,21 +8,20 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/util/Color.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
 
-class ColorSensor : public frc::Subsystem {
+class ColorSensor : public frc2::SubsystemBase {
  private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
-
+  
  public:
   ColorSensor();
   // Made i2cPort and declared it to port type kOnboard
+  private:
   // Made a pointer called ColorSensor
-  rev::ColorSensorV3* colorSensor;
-  static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
+    rev::ColorSensorV3* colorSensor;
+    static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
 
-  void InitDefaultCommand() override;
-};
+ };

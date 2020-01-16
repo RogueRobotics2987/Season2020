@@ -7,16 +7,9 @@
 
 #include "subsystems/ColorSensor.h"
 
-ColorSensor::ColorSensor() : Subsystem("ColorSensor") {
+ColorSensor::ColorSensor() {
   // Asigned the colorSensor pointer to a new i2cPort
   colorSensor = new rev::ColorSensorV3(i2cPort);
 
 }
 
-void ColorSensor::InitDefaultCommand() {
-  // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
