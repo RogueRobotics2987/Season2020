@@ -18,6 +18,7 @@
 #include "commands/SetElevatorSetpoint.h"
 #include "commands/TankDrive.h"
 #include "commands/ElevatorJoyControl.h"
+#include "commands/setHeight.h" 
 
 RobotContainer::RobotContainer()
     : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) {
@@ -44,25 +45,13 @@ RobotContainer::RobotContainer()
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  frc2::JoystickButton m_dUp{&m_joy, 5};
-  frc2::JoystickButton m_dRight{&m_joy, 6};
-  frc2::JoystickButton m_dDown{&m_joy, 7};
-  frc2::JoystickButton m_dLeft{&m_joy, 8};
-  frc2::JoystickButton m_l2{&m_joy, 9};
-  frc2::JoystickButton m_r2{&m_joy, 10};
-  frc2::JoystickButton m_l1{&m_joy, 11};
-  frc2::JoystickButton m_r1{&m_joy, 12};
+
+  frc2::JoystickButton j1{&m_joy, 1}; 
   
+    
+ j1.WhenPressed(setHeight([this]{return 10;}, &m_elevator)); 
+ 
 
-  m_dUp.WhenPressed(SetElevatorSetpoint(0.2, &m_elevator));
-  m_dDown.WhenPressed(SetElevatorSetpoint(-0.2, &m_elevator));
-  m_dRight.WhenPressed(CloseClaw(&m_claw));
-  m_dLeft.WhenPressed(OpenClaw(&m_claw));
-
-  m_r1.WhenPressed(PrepareToPickup(&m_claw, &m_wrist, &m_elevator));
-  m_r2.WhenPressed(Pickup(&m_claw, &m_wrist, &m_elevator));
-  m_l1.WhenPressed(Place(&m_claw, &m_wrist, &m_elevator));
-  m_l2.WhenPressed(Autonomous(&m_claw, &m_wrist, &m_elevator, &m_drivetrain));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

@@ -8,6 +8,6 @@ ElevatorJoyControl::ElevatorJoyControl(std::function<double()> xboxVal, Elevator
 }
 
 void ElevatorJoyControl::Execute(){
-    realElevator->setElevator(xboxValue()); 
+    realElevator->setElevator(-xboxValue()); 
 
 }

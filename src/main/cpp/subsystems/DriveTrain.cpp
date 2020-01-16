@@ -31,6 +31,7 @@ DriveTrain::DriveTrain() {
   LeftFront = new rev::CANSparkMax(43, rev::CANSparkMax::MotorType::kBrushless);
   RightBack = new rev::CANSparkMax(40, rev::CANSparkMax::MotorType::kBrushless);
   RightFront = new rev::CANSparkMax(42, rev::CANSparkMax::MotorType::kBrushless);
+  
   LeftBack->Follow(*LeftFront);
   RightBack->Follow(*RightFront);
 

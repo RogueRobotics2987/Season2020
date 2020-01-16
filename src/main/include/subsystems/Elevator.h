@@ -43,9 +43,15 @@ class Elevator : public frc2::PIDSubsystem {
 
   void setElevator(double joyVal); 
 
+  void setElevatorHeight(double setpoint); 
+
  private:
-  rev::CANSparkMax* elevatorMotor; 
-  frc::PWMVictorSPX m_motor{5};
+  rev::CANSparkMax * elevatorMotor;
+  rev::CANPIDController* elevatorPID;
+  rev::CANEncoder* elevatorEncoder; 
+
+
+  //rev::CANPIDController elevatorPID = elevatorMotor->GetPIDController(); 
   double m_setpoint = 0;
 
 // Conversion value of potentiometer varies between the real world and
