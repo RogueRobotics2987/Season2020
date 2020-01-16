@@ -15,6 +15,8 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Wrist.h"
+#include "subsystems/ColorSensor.h"
+#include "commands/PrintColor.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -38,6 +40,7 @@ class RobotContainer {
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
+  ColorSensor m_colorsensor; 
 
 
   Autonomous m_autonomousCommand;

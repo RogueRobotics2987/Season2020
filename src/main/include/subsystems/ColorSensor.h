@@ -12,16 +12,20 @@
 #include <frc/util/Color.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
+#include <frc/smartdashboard/SmartDashboard.h>
 
 class ColorSensor : public frc2::SubsystemBase {
- private:
+
   
  public:
   ColorSensor();
   // Made i2cPort and declared it to port type kOnboard
+  std::string GetColor();
+  void PrintColor();
+
   private:
   // Made a pointer called ColorSensor
     rev::ColorSensorV3* colorSensor;
     static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
-
+    frc::Color myColorSensor;
  };
