@@ -10,12 +10,14 @@
 #include <frc/XboxController.h>
 #include <frc/Joystick.h>
 #include <frc2/command/Command.h>
-
+#include "ctre/Phoenix.h"
 #include "commands/Autonomous.h"
 #include "subsystems/Claw.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Wrist.h"
+
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -32,7 +34,7 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  //frc::Joystick m_joy{0};
+  frc::Joystick m_joy{0};
   //frc::Joystick xbox{1}; 
   frc::XboxController xbox{0}; 
 
@@ -42,7 +44,7 @@ class RobotContainer {
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
-  //frc2::JoystickButton j1{&m_joy, 1}; 
+  frc2::JoystickButton j1{&m_joy, 1}; 
 
 
 

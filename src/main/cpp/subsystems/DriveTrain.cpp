@@ -9,6 +9,8 @@
 
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+#include "AHRS.h"
+
 // coreys code is now different than brandons!
 DriveTrain::DriveTrain() {
 // Encoders may measure differently in the real world and in
@@ -27,13 +29,16 @@ DriveTrain::DriveTrain() {
   //                                    360.0);
 #endif
   SetName("DriveTrain");
-  LeftBack = new rev::CANSparkMax(44, rev::CANSparkMax::MotorType::kBrushless);
-  LeftFront = new rev::CANSparkMax(43, rev::CANSparkMax::MotorType::kBrushless);
-  RightBack = new rev::CANSparkMax(40, rev::CANSparkMax::MotorType::kBrushless);
-  RightFront = new rev::CANSparkMax(42, rev::CANSparkMax::MotorType::kBrushless);
-  
+  LeftBack = new rev::CANSparkMax(49, rev::CANSparkMax::MotorType::kBrushless);
+  LeftFront = new rev::CANSparkMax(47, rev::CANSparkMax::MotorType::kBrushless);
+  RightBack = new rev::CANSparkMax(46, rev::CANSparkMax::MotorType::kBrushless);
+  RightFront = new rev::CANSparkMax(50, rev::CANSparkMax::MotorType::kBrushless);
+  leftBackEncoder = new rev::CANEncoder(*LeftBack); 
+  rightBackEncoder = new rev::CANEncoder(*RightBack); 
   LeftBack->Follow(*LeftFront);
   RightBack->Follow(*RightFront);
+  myAhrs = new AHRS(SerialPort::kMXP); 
+
 
   m_robotDrive = new frc::DifferentialDrive(*LeftFront, *RightFront);
   // Let's show everything on the LiveWindow
@@ -57,6 +62,8 @@ void DriveTrain::Log() {
 }
 
 void DriveTrain::Drive(double left, double right) {
+  myAhrs->GetRate(); 
+  //leftFrontEncoder->SetDistancePerPulse();
   m_robotDrive->ArcadeDrive(left, right);
 }
 

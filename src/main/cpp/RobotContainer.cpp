@@ -34,10 +34,10 @@ RobotContainer::RobotContainer()
   m_elevator.Log();
   m_drivetrain.Log();
 
- /* m_drivetrain.SetDefaultCommand(TankDrive(
-      [this] { return m_joy.GetY(); },
+ m_drivetrain.SetDefaultCommand(TankDrive(
+      [this] { return -m_joy.GetY(); },
       [this] { return m_joy.GetZ(); },
-      &m_drivetrain));*/
+      &m_drivetrain));
   m_elevator.SetDefaultCommand(ElevatorJoyControl(xbox.GetRawAxis(3) * .5, &m_elevator));
   std::cout << "Configure buttons" << std::endl;
   // Configure the button bindings
