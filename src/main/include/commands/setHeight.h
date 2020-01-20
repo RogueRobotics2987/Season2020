@@ -11,6 +11,7 @@ class setHeight : public frc2::CommandHelper<frc2::CommandBase, setHeight>{
         void Execute(); 
         bool isFinished(); 
         void End(); 
+        void initialize(); 
 
 
 

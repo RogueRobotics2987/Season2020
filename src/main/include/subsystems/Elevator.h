@@ -28,6 +28,8 @@ class Elevator : public frc2::PIDSubsystem {
    */
   void Log();
 
+  void outputSomething(); 
+
   /**
    * Use the potentiometer as the PID sensor. This method is automatically
    * called by the subsystem.

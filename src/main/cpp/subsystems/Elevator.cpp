@@ -28,7 +28,7 @@ Elevator::Elevator()
   elevatorPID->SetP(0.0008);
   elevatorPID->SetI(0);
   elevatorPID->SetD(0.0032);
-
+  
   //elevatorPID = elevatorMotor->GetPIDController(); 
   // Let's show everything on the LiveWindow
   // Corey added a comment to brandons file
@@ -38,6 +38,7 @@ Elevator::Elevator()
   // Corey is adding more code
  // AddChild("Motor", &m_motor);
   AddChild("Pot", &m_pot);
+  std::cout << "Elevator is being created" << std::endl; 
 }
 
 void Elevator::Log() { frc::SmartDashboard::PutData("Wrist Pot", &m_pot); 
@@ -52,11 +53,16 @@ void Elevator::UseOutput(double output, double setpoint) {
 }
 
 void Elevator::setElevator(double joyVal){
+  //std::cout << "Set elevator default" << std::endl; 
   elevatorMotor->Set(joyVal); 
 }
 
 void Elevator::setElevatorHeight(double setpoint){
   elevatorPID->SetReference(setpoint, rev::ControlType::kSmartMotion, 0);
+}
+
+void Elevator::outputSomething(){
+  std::cout<< "test" << std::endl; 
 }
 
 //brandon

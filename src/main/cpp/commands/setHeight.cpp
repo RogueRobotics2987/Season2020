@@ -35,5 +35,9 @@ void setHeight::End(){
     frc::SmartDashboard::PutNumber("End X", x); 
 }
 
+void setHeight::initialize(){
+    std::cout << "Lower case initialize" << std::endl; 
+}
+
 
 
