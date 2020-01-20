@@ -6,7 +6,8 @@
 
 class setHeight : public frc2::CommandHelper<frc2::CommandBase, setHeight>{ 
     public: 
-        setHeight(std::function<double()> setPoint, Elevator* mElevator); 
+        setHeight(double setPoint, Elevator* mElevator); 
+        void Initialize(); 
         void Execute(); 
         bool isFinished(); 
         void End(); 
@@ -15,7 +16,7 @@ class setHeight : public frc2::CommandHelper<frc2::CommandBase, setHeight>{
 
     private: 
         Elevator* elevator; 
-        std::function<double()> heightVal; 
+        double heightVal; 
 
 
 };

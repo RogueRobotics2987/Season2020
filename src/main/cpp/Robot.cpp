@@ -39,7 +39,11 @@ void Robot::RobotInit() {}
 // this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
 // this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
 // this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
+void Robot::RobotPeriodic() { 
+  frc2::CommandScheduler::GetInstance().Run();
+  if(0)
+    std::cout << "Not active" << std::endl;
+  }
 //test
 //test
 /**

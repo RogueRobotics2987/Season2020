@@ -9,7 +9,7 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/button/JoystickButton.h>
-
+#include <frc2/command/CommandScheduler.h>
 #include "commands/CloseClaw.h"
 #include "commands/OpenClaw.h"
 #include "commands/Pickup.h"
@@ -19,6 +19,8 @@
 #include "commands/TankDrive.h"
 #include "commands/ElevatorJoyControl.h"
 #include "commands/setHeight.h" 
+
+#include <iostream>
 
 RobotContainer::RobotContainer()
     : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) {
@@ -32,12 +34,12 @@ RobotContainer::RobotContainer()
   m_elevator.Log();
   m_drivetrain.Log();
 
-  m_drivetrain.SetDefaultCommand(TankDrive(
+ /* m_drivetrain.SetDefaultCommand(TankDrive(
       [this] { return m_joy.GetY(); },
       [this] { return m_joy.GetZ(); },
-      &m_drivetrain));
+      &m_drivetrain));*/
   m_elevator.SetDefaultCommand(ElevatorJoyControl(xbox.GetRawAxis(3) * .5, &m_elevator));
-
+  std::cout << "Configure buttons" << std::endl;
   // Configure the button bindings
   ConfigureButtonBindings();
 }
@@ -46,15 +48,19 @@ RobotContainer::RobotContainer()
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
 
-  frc2::JoystickButton j1{&m_joy, 1}; 
-  
-    
- j1.WhenPressed(setHeight([this]{return 10;}, &m_elevator)); 
+  std::cout << "Pressing the button" << std::endl;
+
+ //frc2::JoystickButton(&m_joy, 1).WhenPressed(new setHeight(10.0, &m_elevator)); 
+ frc2::JoystickButton(&xbox, 1).WhenPressed(new setHeight(10,&m_elevator));
+ 
+ 
+
  
 
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
+  std::cout << "auto command" << std::endl;
   return &m_autonomousCommand;
 }

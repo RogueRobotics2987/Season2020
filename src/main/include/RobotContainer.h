@@ -6,7 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-
+#include <frc2/command/button/JoystickButton.h>
+#include <frc/XboxController.h>
 #include <frc/Joystick.h>
 #include <frc2/command/Command.h>
 
@@ -31,13 +32,18 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  frc::Joystick m_joy{0};
-  frc::Joystick xbox{1}; 
+  //frc::Joystick m_joy{0};
+  //frc::Joystick xbox{1}; 
+  frc::XboxController xbox{0}; 
+
+  
 
   Claw m_claw;
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
+  //frc2::JoystickButton j1{&m_joy, 1}; 
+
 
 
   Autonomous m_autonomousCommand;
