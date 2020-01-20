@@ -7,8 +7,9 @@
 
 #include "commands/PrintColor.h"
 
-PrintColor::PrintColor() {
-  AddRequirements({myColorSensor});
+PrintColor::PrintColor(ColorSensor* colorsensor) {
+  myColorSensor = colorsensor;
+  AddRequirements(myColorSensor);
   // Use addRequirements() here to declare subsystem dependencies.
 }
 

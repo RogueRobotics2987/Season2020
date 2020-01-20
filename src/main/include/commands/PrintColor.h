@@ -22,7 +22,7 @@
 class PrintColor
     : public frc2::CommandHelper<frc2::CommandBase, PrintColor> {
  public:
-  PrintColor();
+  PrintColor(ColorSensor* colorsensor);
 
   void Initialize() override;
 

@@ -37,7 +37,7 @@ RobotContainer::RobotContainer()
       [this] { return m_joy.GetZ(); },
       &m_drivetrain));
   m_elevator.SetDefaultCommand(ElevatorJoyControl([this]{ return xbox.GetRawAxis(3) * .5;}, &m_elevator));
-  m_colorsensor.SetDefaultCommand(PrintColor()); 
+  m_colorsensor.SetDefaultCommand(PrintColor(&m_colorsensor)); 
   // Configure the button bindings
   ConfigureButtonBindings();
 }

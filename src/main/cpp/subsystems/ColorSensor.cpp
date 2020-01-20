@@ -14,27 +14,27 @@ ColorSensor::ColorSensor() {
 }
 
 std::string ColorSensor::GetColor(){
-  
-  if ((myColorSensor.blue>=0.30) && 
+  myColorSensor = colorSensor->GetColor(); 
+  if ((myColorSensor.blue>=0.35) && 
        (myColorSensor.green>myColorSensor.blue) &&
-       (myColorSensor.green>myColorSensor.red))
-        return "blue";
+       (myColorSensor.blue>myColorSensor.red))
+        return "red"; //color sensor reads blue, shield generator reads red
 
     else if ((myColorSensor.green>myColorSensor.blue) &&
-            (myColorSensor.green>myColorSensor.red) &&
+            (myColorSensor.blue>myColorSensor.red) &&
             (abs(myColorSensor.red-myColorSensor.blue)<=.07))
-            return "green";
+            return "yellow"; //color sensor reads green, shield generator reads yellow
+
+    else if  ((myColorSensor.green>myColorSensor.red) &&
+             (myColorSensor.red>myColorSensor.blue)
+             )
+             return "green"; //color sensor reads yellow, shield generator reads green
 
     else if  (((myColorSensor.red>myColorSensor.blue) &&
-             (myColorSensor.red>myColorSensor.green))
+             (myColorSensor.blue>myColorSensor.green))
              || (abs(myColorSensor.red-myColorSensor.green)<=.1)
              )
-             return "red";
-
-    else if  ((myColorSensor.green>myColorSensor.blue) &&
-             (myColorSensor.green>myColorSensor.red)
-             )
-             return "yellow";
+             return "blue";//color sensor reads red, shield generator reads blue
 
     else{
     return "";
@@ -42,6 +42,10 @@ std::string ColorSensor::GetColor(){
 
 }
 void ColorSensor::PrintColor(){
-  frc::SmartDashboard::PutString("Wheel Color", GetColor());
+  frc::SmartDashboard::PutNumber("Red Value", myColorSensor.red); 
+  frc::SmartDashboard::PutNumber("Green Value", myColorSensor.green); 
+  frc::SmartDashboard::PutNumber("Blue Value", myColorSensor.blue); 
+
+  frc::SmartDashboard::PutString("Shield Generator Color", GetColor());
 
 }
