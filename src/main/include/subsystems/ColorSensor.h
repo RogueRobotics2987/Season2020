@@ -13,6 +13,8 @@
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/DriverStation.h>
+#include "rev/CANSparkMax.h" 
 
 class ColorSensor : public frc2::SubsystemBase {
 
@@ -22,10 +24,18 @@ class ColorSensor : public frc2::SubsystemBase {
   // Made i2cPort and declared it to port type kOnboard
   std::string GetColor();
   void PrintColor();
+  std::string GetGameData();
+  void SetMotor(); 
+  void SpinNum(); 
+  void ResetNums(); 
+  rev::CANSparkMax* spinner; //color wheel spinner
 
   private:
+  bool onColor = false; 
+  int colorCount = 0; 
   // Made a pointer called ColorSensor
     rev::ColorSensorV3* colorSensor;
     static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
-    frc::Color myColorSensor;
+    frc::Color curColor;
+    std::string gameData;
  };
