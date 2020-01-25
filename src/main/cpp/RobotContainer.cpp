@@ -25,30 +25,32 @@
 RobotContainer::RobotContainer()
     //: m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) 
     {
-  m_joy = new frc::Joystick{0}; 
-  m_elevator = new Elevator; 
-  j1 = new frc2::JoystickButton(m_joy, 3); 
-  frc::SmartDashboard::PutData(&m_drivetrain);
+  //m_joy = new frc::Joystick{0}; 
+  //j1 = new frc2::JoystickButton(m_joy, 3); 
+  // frc::SmartDashboard::PutData(&m_drivetrain);
   //frc::SmartDashboard::PutData(&m_elevator);
-  frc::SmartDashboard::PutData(&m_wrist);
-  frc::SmartDashboard::PutData(&m_claw);
+  // frc::SmartDashboard::PutData(&m_wrist);
+  // frc::SmartDashboard::PutData(&m_claw);
 
-  m_claw.Log();
-  m_wrist.Log();
-  m_elevator->Log();
-  m_drivetrain.Log();
+  // m_claw.Log();
+  // m_wrist.Log();
+  // m_elevator.Log();
 
- m_drivetrain.SetDefaultCommand(TankDrive(
-      [this] { return -m_joy->GetY(); },
-      [this] { return m_joy->GetZ(); },
-      &m_drivetrain));
-  m_elevator->SetDefaultCommand(ElevatorJoyControl(xbox.GetRawAxis(3) * .5, m_elevator));
-  std::cout << "Configure buttons" << std::endl;
-  // Configure the button bindings
-  m_elevator->outputSomething(); 
-  std::cout << "Constructor" << std::endl; 
-   j1->WhenPressed(new setHeight(10,m_elevator));
+
+
+
+  // m_drivetrain.Log();
   ConfigureButtonBindings();
+//  m_drivetrain.SetDefaultCommand(TankDrive(
+//       [this] { return -m_joy.GetY(); },
+//       [this] { return m_joy.GetZ(); },
+//       &m_drivetrain));
+//   m_elevator.SetDefaultCommand(ElevatorJoyControl(xbox.GetRawAxis(3) * .5, &m_elevator));
+//   std::cout << "Configure buttons" << std::endl;
+//   // Configure the button bindings
+//   m_elevator.outputSomething(); 
+//   std::cout << "Constructor" << std::endl; 
+   //j1->WhenPressed(new setHeight(10,m_elevator));
 }
 
 
@@ -59,7 +61,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
   std::cout << "Configure button bindings" << std::endl;
 
- //frc2::JoystickButton(&m_joy, 1).WhenPressed(new setHeight(10.0, &m_elevator)); 
+ j1.WhenPressed(new setHeight(10.0, &m_elevator)); 
  
  
 

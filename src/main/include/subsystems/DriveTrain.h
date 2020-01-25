@@ -16,6 +16,8 @@
 #include <frc2/command/SubsystemBase.h>
 #include "rev/CANSparkMax.h"
 #include <frc/kinematics/DifferentialDriveOdometry.h>
+#include <frc/kinematics/DifferentialDriveWheelSpeeds.h>
+
 
 
 namespace frc {
@@ -64,17 +66,15 @@ class DriveTrain : public frc2::SubsystemBase {
   double GetDistanceToObstacle();
 
  private:
-  rev::CANEncoder* leftBackEncoder; 
-  rev::CANEncoder* leftFrontEncoder; 
-  rev::CANEncoder* rightBackEncoder; 
-  rev::CANEncoder* rightFrontEncoder; 
-  frc::DifferentialDriveOdometry* m_odometry;
+
   rev::CANSparkMax* LeftBack;
   rev::CANSparkMax* LeftFront;
   rev::CANSparkMax* RightBack;
   rev::CANSparkMax* RightFront;
   frc::DifferentialDrive* m_robotDrive;
   AHRS* myAhrs; 
+  frc::DifferentialDriveOdometry* m_odometry; 
+
   // frc::PWMVictorSPX m_frontLeft{1};
   // frc::PWMVictorSPX m_rearLeft{2};
   // frc::SpeedControllerGroup m_left{LeftFront, LeftBack};

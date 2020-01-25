@@ -29,18 +29,17 @@ DriveTrain::DriveTrain() {
   //                                    360.0);
 #endif
   SetName("DriveTrain");
-  LeftBack = new rev::CANSparkMax(49, rev::CANSparkMax::MotorType::kBrushless);
-  LeftFront = new rev::CANSparkMax(47, rev::CANSparkMax::MotorType::kBrushless);
-  RightBack = new rev::CANSparkMax(46, rev::CANSparkMax::MotorType::kBrushless);
-  RightFront = new rev::CANSparkMax(50, rev::CANSparkMax::MotorType::kBrushless);
-  leftBackEncoder = new rev::CANEncoder(*LeftBack); 
-  rightBackEncoder = new rev::CANEncoder(*RightBack); 
-  LeftBack->Follow(*LeftFront);
-  RightBack->Follow(*RightFront);
+  //LeftBack = new rev::CANSparkMax(44, rev::CANSparkMax::MotorType::kBrushless);
+  LeftFront = new rev::CANSparkMax(43, rev::CANSparkMax::MotorType::kBrushless);
+  //RightBack = new rev::CANSparkMax(40, rev::CANSparkMax::MotorType::kBrushless);
+  RightFront = new rev::CANSparkMax(42, rev::CANSparkMax::MotorType::kBrushless);
   myAhrs = new AHRS(SerialPort::kMXP); 
 
 
+
   m_robotDrive = new frc::DifferentialDrive(*LeftFront, *RightFront);
+ // m_odometry = new frc::DifferentialDriveOdometry{frc::Rotation2d(units::degree_t(GetHeading()))}
+
   // Let's show everything on the LiveWindow
   // AddChild("Front_Left Motor", &m_frontLeft);
   // AddChild("Rear Left Motor", &m_rearLeft);
@@ -61,13 +60,13 @@ void DriveTrain::Log() {
   // frc::SmartDashboard::PutNumber("Gyro", m_gyro.GetAngle());
 }
 
-void DriveTrain::Drive(double left, double right) {
-  myAhrs->GetRate(); 
+void DriveTrain::Drive(double left, double right) { 
   //leftFrontEncoder->SetDistancePerPulse();
-  m_robotDrive->ArcadeDrive(left, right);
+  m_robotDrive->ArcadeDrive(-left, right);
 }
 
-double DriveTrain::GetHeading() { /*return m_gyro.GetAngle();*/ return 0; }
+double DriveTrain::GetHeading() { 
+myAhrs->GetAngle(); }
 
 void DriveTrain::Reset() {
   // m_gyro.Reset();
