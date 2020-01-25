@@ -15,6 +15,7 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Wrist.h"
+#include "subsystems/IndexSensor.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -28,6 +29,7 @@ class RobotContainer {
   RobotContainer();
 
   frc2::Command* GetAutonomousCommand();
+  IndexSensor m_indexsensor;
 
  private:
   // The robot's subsystems and commands are defined here...
@@ -38,7 +40,6 @@ class RobotContainer {
   Wrist m_wrist;
   Elevator m_elevator;
   DriveTrain m_drivetrain;
-
 
   Autonomous m_autonomousCommand;
 
