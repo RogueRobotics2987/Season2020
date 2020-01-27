@@ -21,10 +21,14 @@ class IndexSensor : public frc2::SubsystemBase {
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic();
+  void SomethingWithBalls();
   void Get();
 
  private:
   frc::DigitalInput * m_IndexSensor;
+  int BallCount = 0;
+  bool SucckyBoiIndexState = false;
+  bool YeetIndexState = false;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
