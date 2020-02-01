@@ -23,4 +23,5 @@ class Shooter : public frc2::SubsystemBase {
 
   void Log() ;
   void HighGoal() ;
+  
 };

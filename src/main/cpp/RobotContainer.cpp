@@ -19,6 +19,7 @@
 #include "commands/TankDrive.h"
 #include "commands/ElevatorJoyControl.h"
 #include "commands/Shoot.h"
+#include "commands/StoreBall.h"
 
 //SH yo so i tried setting up shooter and theres stuff here
 RobotContainer::RobotContainer()
@@ -57,6 +58,9 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton m_l1{&m_joy, 11};
   frc2::JoystickButton m_r1{&m_joy, 12};
   
+  //test state machine
+  frc2::JoystickButton m_b3{&m_joy, 3};
+  
 
   m_dUp.WhenPressed(SetElevatorSetpoint(0.2, &m_elevator));
   m_dDown.WhenPressed(SetElevatorSetpoint(-0.2, &m_elevator));
@@ -69,6 +73,8 @@ void RobotContainer::ConfigureButtonBindings() {
   m_l2.WhenPressed(Autonomous(&m_claw, &m_wrist, &m_elevator, &m_drivetrain));
   // m_l2.WhenPressed(Shoot(&m_shooter));
 
+  //test state machine stuff
+  m_b3.WhenPressed(StoreBall(&m_intake));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
