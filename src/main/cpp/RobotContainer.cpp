@@ -23,6 +23,7 @@
 
 RobotContainer::RobotContainer()
     : m_autonomousCommand(&m_claw, &m_wrist, &m_elevator, &m_drivetrain) {
+  ConfigureButtonBindings();
   frc::SmartDashboard::PutData(&m_drivetrain);
   frc::SmartDashboard::PutData(&m_elevator);
   frc::SmartDashboard::PutData(&m_wrist);
@@ -41,7 +42,6 @@ RobotContainer::RobotContainer()
   //m_colorsensor.SetDefaultCommand(PrintColor(&m_colorsensor)); 
   m_colorsensor.SetDefaultCommand(SpinWheel(&m_colorsensor));
   // Configure the button bindings
-  ConfigureButtonBindings();
 }
 
 
@@ -55,17 +55,18 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton m_r2{&m_joy, 10};
   frc2::JoystickButton m_l1{&m_joy, 11};
   frc2::JoystickButton m_r1{&m_joy, 12};
+
   
+    j1.WhenPressed(SpinWheel(&m_colorsensor)); 
+  // m_dUp.WhenPressed(SetElevatorSetpoint(0.2, &m_elevator));
+  // m_dDown.WhenPressed(SetElevatorSetpoint(-0.2, &m_elevator));
+  // m_dRight.WhenPressed(CloseClaw(&m_claw));
+  // m_dLeft.WhenPressed(OpenClaw(&m_claw));
 
-  m_dUp.WhenPressed(SetElevatorSetpoint(0.2, &m_elevator));
-  m_dDown.WhenPressed(SetElevatorSetpoint(-0.2, &m_elevator));
-  m_dRight.WhenPressed(CloseClaw(&m_claw));
-  m_dLeft.WhenPressed(OpenClaw(&m_claw));
-
-  m_r1.WhenPressed(PrepareToPickup(&m_claw, &m_wrist, &m_elevator));
-  m_r2.WhenPressed(Pickup(&m_claw, &m_wrist, &m_elevator));
-  m_l1.WhenPressed(Place(&m_claw, &m_wrist, &m_elevator));
-  m_l2.WhenPressed(Autonomous(&m_claw, &m_wrist, &m_elevator, &m_drivetrain));
+  // m_r1.WhenPressed(PrepareToPickup(&m_claw, &m_wrist, &m_elevator));
+  // m_r2.WhenPressed(Pickup(&m_claw, &m_wrist, &m_elevator));
+  // m_l1.WhenPressed(Place(&m_claw, &m_wrist, &m_elevator));
+  // m_l2.WhenPressed(Autonomous(&m_claw, &m_wrist, &m_elevator, &m_drivetrain));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

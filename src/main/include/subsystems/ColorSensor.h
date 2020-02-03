@@ -24,10 +24,11 @@ class ColorSensor : public frc2::SubsystemBase {
   // Made i2cPort and declared it to port type kOnboard
   std::string GetColor();
   void PrintColor();
-  std::string GetGameData();
+  bool GetGameData();
   void SetMotor(); 
   void SpinNum(); 
   void ResetNums(); 
+  void GameDataSpin(); 
   rev::CANSparkMax* spinner; //color wheel spinner
 
   private:

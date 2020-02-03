@@ -9,6 +9,7 @@
 
 #include <frc/Joystick.h>
 #include <frc2/command/Command.h>
+#include <frc2/command/button/JoystickButton.h>
 
 #include "commands/Autonomous.h"
 #include "subsystems/Claw.h"
@@ -41,6 +42,7 @@ class RobotContainer {
   Elevator m_elevator;
   DriveTrain m_drivetrain;
   ColorSensor m_colorsensor; 
+  frc2::JoystickButton j1{&m_joy, 1}; 
 
 
   Autonomous m_autonomousCommand;
