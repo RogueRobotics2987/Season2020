@@ -9,10 +9,10 @@
 
 Shooter::Shooter(){
   SetName("Shooter");
-  shooterMotor = new rev::CANSparkMax(52, rev::CANSparkMax::MotorType::kBrushless);
+  shooterMotor = new rev::CANSparkMax(0, rev::CANSparkMax::MotorType::kBrushless);
 }
 
-void Shooter::HighGoal(){ shooterMotor->Set(0.8); }
+void Shooter::HighGoal(){ shooterMotor->Set(0.77); }
 
 void Shooter::Log() {}
 

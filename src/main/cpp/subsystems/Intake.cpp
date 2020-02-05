@@ -18,7 +18,7 @@ Intake::Intake() {
 
     //test stuff
     testButton = false;
-    testSensor = new frc::DigitalInput(8);
+    testSensor = new frc::DigitalInput(1);
     testMotor = new rev::CANSparkMax{49, rev::CANSparkMax::MotorType::kBrushless};
 }
 
