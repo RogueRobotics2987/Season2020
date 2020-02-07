@@ -4,7 +4,7 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
- 
+
 #include "Robot.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -20,28 +20,8 @@ void Robot::RobotInit() {}
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
-// this is a whole bunch of new code I added to my personal branch that I wanna copy over eventually
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
-//test
-//test
+
 /**
  * This function is called once each time the robot enters Disabled mode. You
  * can use it to reset any subsystem information you want to clear when the
@@ -63,9 +43,7 @@ void Robot::AutonomousInit() {
   }
 }
 
-void Robot::AutonomousPeriodic() {
-
-}
+void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
   // This makes sure that the autonomous stops running when
@@ -81,22 +59,7 @@ void Robot::TeleopInit() {
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {
-  // NON CMD-BASED Approach:
-  //drive robot 
-    //joystick input
-      // 2 axis
-        // x and y
-    //send joystick input to drivetrain
-  
-  // get the 2 joystick objects (joyLeft, joyRight)
-  // get drivetrain object (DiffDrivetrain)
-  // DiffDrivetrain.Drive(joyLeft.getYAxis(), joyRight.getYAxis())
-
-
-
-
-}
+void Robot::TeleopPeriodic() {}
 
 /**
  * This function is called periodically during test mode.

@@ -9,23 +9,16 @@
 
 #include <frc2/command/SubsystemBase.h>
 
-#include "rev/CANSparkMax.h"
-#include "frc/drive/DifferentialDrive.h"
-
-class DriveTrain : public frc2::SubsystemBase {
+class ExampleSubsystem : public frc2::SubsystemBase {
  public:
-  DriveTrain();
-  void MoveForward();
+  ExampleSubsystem();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void Periodic();
+  void Periodic() override;
 
  private:
- rev::CANSparkMax* Motor;
- rev::CANSparkMax* Motor2;
- frc::DifferentialDrive* Driver;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

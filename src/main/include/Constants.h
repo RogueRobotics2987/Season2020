@@ -5,16 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/DriveTrain.h"
+#pragma once
 
-DriveTrain::DriveTrain() {
-    Motor = new rev::CANSparkMax(49, rev::CANSparkMax::MotorType::kBrushless);
-    Motor2 = new rev::CANSparkMax(56, rev::CANSparkMax::MotorType::kBrushless);
-    Driver = new frc::DifferentialDrive(*Motor, *Motor2);
-}
-
-// This method will be called once per scheduler run
-void DriveTrain::Periodic() {}
-void DriveTrain::MoveForward(){
-    Driver->ArcadeDrive(0.2, 0.2);
-}
+/**
+ * The Constants header provides a convenient place for teams to hold robot-wide
+ * numerical or boolean constants.  This should not be used for any other
+ * purpose.
+ *
+ * It is generally a good idea to place constants into subsystem- or
+ * command-specific namespaces within this header, which can then be used where
+ * they are needed.
+ */
